@@ -1,0 +1,124 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--global',
+1 verbose cli   'coffeescript' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData coffeescript
+8 silly fetchNamedPackageData coffeescript
+9 silly mapToRegistry name coffeescript
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/coffeescript
+13 verbose request uri https://registry.npmjs.org/coffeescript
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 16:57:32
+16 verbose request id 89d3903d2cbcc285
+17 verbose etag W/"5ecc7c6291f9d7f68bf6f72a619ffeb7"
+18 verbose lastModified Tue, 01 Jan 2019 14:34:08 GMT
+19 http request GET https://registry.npmjs.org/coffeescript
+20 http 304 https://registry.npmjs.org/coffeescript
+21 verbose headers { date: 'Wed, 06 Feb 2019 08:03:19 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'set-cookie':
+21 verbose headers    [ '__cfduid=db22c116af00d0da2731752ca43c077671549440199; expires=Thu, 06-Feb-20 08:03:19 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'cache-control': 'max-age=300',
+21 verbose headers   'cf-ray': '4a4c197f4c49ae5d-KIX',
+21 verbose headers   etag: '"5ecc7c6291f9d7f68bf6f72a619ffeb7"',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   'last-modified': 'Tue, 01 Jan 2019 14:34:08 GMT',
+21 verbose headers   vary: 'accept-encoding, accept',
+21 verbose headers   'x-amz-meta-rev': '133-0b5b3c99985829eb21632b44872b95e5',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Wed, 06 Feb 2019 08:03:19 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'set-cookie':
+22 silly get      [ '__cfduid=db22c116af00d0da2731752ca43c077671549440199; expires=Thu, 06-Feb-20 08:03:19 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'cache-control': 'max-age=300',
+22 silly get     'cf-ray': '4a4c197f4c49ae5d-KIX',
+22 silly get     etag: '"5ecc7c6291f9d7f68bf6f72a619ffeb7"',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     'last-modified': 'Tue, 01 Jan 2019 14:34:08 GMT',
+22 silly get     vary: 'accept-encoding, accept',
+22 silly get     'x-amz-meta-rev': '133-0b5b3c99985829eb21632b44872b95e5',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/coffeescript from cache
+24 verbose get saving coffeescript to /home/kenji/.npm/registry.npmjs.org/coffeescript/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule coffeescript@2.3.2 checking installable status
+38 silly cache add args [ 'coffeescript', null ]
+39 verbose cache add spec coffeescript
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'coffeescript',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'coffeescript',
+40 silly cache add   rawSpec: '',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed coffeescript@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for coffeescript
+43 info addNameTag [ 'coffeescript', 'latest' ]
+44 silly mapToRegistry name coffeescript
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/coffeescript
+48 verbose addNameTag registry:https://registry.npmjs.org/coffeescript not in flight; fetching
+49 verbose get https://registry.npmjs.org/coffeescript not expired, no request
+50 silly addNameTag next cb for coffeescript with tag latest
+51 silly addNamed coffeescript@2.3.2
+52 verbose addNamed "2.3.2" is a plain semver version for coffeescript
+53 silly cache afterAdd coffeescript@2.3.2
+54 verbose afterAdd /home/kenji/.npm/coffeescript/2.3.2/package/package.json not in flight; writing
+55 verbose afterAdd /home/kenji/.npm/coffeescript/2.3.2/package/package.json written
+56 silly loadAllDepsIntoIdealTree Finishing
+57 silly idealTree:prePrune lib
+57 silly idealTree:prePrune └── coffeescript@2.3.2
+58 silly loadIdealTree Finishing
+59 silly currentTree lib
+60 silly idealTree lib
+60 silly idealTree └── coffeescript@2.3.2
+61 silly generateActionsToTake Starting
+62 silly install generateActionsToTake
+63 warn checkPermissions Missing write access to /usr/local/lib
+64 silly rollbackFailedOptional Starting
+65 silly rollbackFailedOptional Finishing
+66 silly runTopLevelLifecycles Starting
+67 silly runTopLevelLifecycles Finishing
+68 silly install printInstalled
+69 verbose stack Error: EACCES: permission denied, access '/usr/local/lib'
+70 verbose cwd /home/kenji/developments/share_schedule/app/assets/javascripts
+71 error Linux 4.15.0-43-generic
+72 error argv "/usr/bin/node" "/usr/bin/npm" "install" "--global" "coffeescript"
+73 error node v8.10.0
+74 error npm  v3.5.2
+75 error path /usr/local/lib
+76 error code EACCES
+77 error errno -13
+78 error syscall access
+79 error Error: EACCES: permission denied, access '/usr/local/lib'
+79 error  { Error: EACCES: permission denied, access '/usr/local/lib'
+79 error   errno: -13,
+79 error   code: 'EACCES',
+79 error   syscall: 'access',
+79 error   path: '/usr/local/lib' }
+80 error Please try running this command again as root/Administrator.
+81 verbose exit [ -13, true ]

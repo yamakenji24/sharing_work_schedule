@@ -1,5 +1,10 @@
 {
   "name": "share_schedule",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.3.2"
+  }
 }

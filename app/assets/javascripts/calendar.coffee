@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
-  $('#calendar').fullCalendar{}
+  $('#calendar').fullCalendar()
   return
 
 $(document).on 'turbolinks:before-cache', ->
