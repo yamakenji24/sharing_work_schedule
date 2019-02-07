@@ -10,6 +10,29 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("シフト管理アプリ", "/") %>
+      </div> 
+      <ul class="header-menus">
+        <li>
+          <%= link_to("シフト表", "/shift/index") %>
+        </li>
+
+        <li>
+          <%= link_to("ユーザー一覧", "/users/index") %>
+        </li>
+        <li>
+          <%= link_to("ログイン", "/login") %>
+        </li>
+      </ul>
+    </header>
+     <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      
     <%= yield %>
   </body>
 </html>
