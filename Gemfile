@@ -65,5 +65,5 @@ gem 'therubyracer'
 
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
-
+gem 'jquery-rails'
 
