@@ -1,8 +1,9 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
+//= require turbolinks
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/lang/ja
@@ -15,12 +16,26 @@ $(document).ready(function() {
             center: 'title',
             right: 'month, agendaWeek, agendaDay'
         },
-        editable: true, 
+        navLinks: true,
         selectable: true,
         selectHelper: true, 
         height: 600,
         width: 400,
 
+        select: function(start, end) {
+            var user_name = prompt('ユーザー名:');
+            var eventData;
+            if ( user_name) {
+                eventData = {
+                    user_name: user_name,
+                    start: start,
+                    finish_at: end
+                };
+                $('#calendar').fullCalendar('renderEvent', eventData, true);
+            }
+            $('#calendar').fullCalendar('unselect');
+        },
+        
         //ボタン文字列
         buttonText: {
             prev: '<',
@@ -41,5 +56,8 @@ $(document).ready(function() {
         //開始時間を朝7時に設定
         scrollTime: '07:00:00',
         defaultView: 'month',
+        
+        events: '/events.json',
+        editable: true
     });
 });
