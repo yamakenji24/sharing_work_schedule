@@ -21,15 +21,17 @@ $(document).ready(function() {
                 }
             }
         });
-*/
+        */
+        alert("確認中!"),
         $.ajax({
-            type: "post",
+            type: 'POST',
             url:"/events/create",
             data: {
                 title: title,
                 start: start,
                 end: end
             }
+            // alert("create!"),
         }).done(function(data) {
             alert("登録しました!");
         }).fail(function(data) {
@@ -45,7 +47,7 @@ $(document).ready(function() {
             right: 'month, agendaWeek, agendaDay'
         },
         navLinks: true,
-        selectable: true,
+        selectable: false,
         selectHelper: true, 
         height: 600,
         width: 400,
@@ -59,10 +61,13 @@ $(document).ready(function() {
                     start: start,
                     end: end
                 };
+                //登録したイベントをカレンダー上に永久に？くっつける？
                 $('#calendar').fullCalendar('renderEvent', eventData, true);
-                $('#calendar').fullCalendar('unselect');
+      
                 create_event(title, start, end);
             }
+            //現在の選択したっていう場所をクリア
+            $('#calendar').fullCalendar('unselect')
         },
         
         //ボタン文字列
@@ -87,6 +92,6 @@ $(document).ready(function() {
         defaultView: 'month',
         
         events: '/events.json',
-        editable: true
+        editable: false
     });
 });

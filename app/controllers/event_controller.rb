@@ -15,6 +15,9 @@ class EventController < ApplicationController
   end
 
   def create
+    flash[:notice] = "create method"
+     redirect_to("/shift/index")
+
       event = Event.new
       event.attributes = {
         #user_id: @current_user.user_id,
