@@ -10,6 +10,34 @@
 //= require_tree .
 
 $(document).ready(function() {
+    create_event = function(title, start, end) {
+        /*
+        $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+            var token;
+            if (!options.crossDomain) {
+                token = $('meta[name="csrf-token"]').attr('content');
+                if ( token ) {
+                    return jqXHR.setRequestHeader('X-CSRF-Token', token);
+                }
+            }
+        });
+*/
+        $.ajax({
+            type: "post",
+            url:"/events/create",
+            data: {
+                title: title,
+                start: start,
+                end: end
+            }
+        }).done(function(data) {
+            alert("登録しました!");
+        }).fail(function(data) {
+            alert("登録できませんでした。");
+        });
+    };
+
+            
     $('#calendar').fullCalendar({
         header: {
             left: 'prev, next, today',
@@ -23,17 +51,18 @@ $(document).ready(function() {
         width: 400,
 
         select: function(start, end) {
-            var user_name = prompt('ユーザー名:');
+            var title = prompt('ユーザー名');
             var eventData;
-            if ( user_name) {
+            if ( title ) {
                 eventData = {
-                    user_name: user_name,
+                    title: title,
                     start: start,
-                    finish_at: end
+                    end: end
                 };
                 $('#calendar').fullCalendar('renderEvent', eventData, true);
+                $('#calendar').fullCalendar('unselect');
+                create_event(title, start, end);
             }
-            $('#calendar').fullCalendar('unselect');
         },
         
         //ボタン文字列

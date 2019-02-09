@@ -1,9 +1,9 @@
 # coding: utf-8
 Rails.application.routes.draw do
   # 試しに
-  root to: 'calendar#index'
-  get 'calendar/index'
-  get 'events', to: 'event#show'
+  #root to: 'calendar#index'
+  #get 'calendar/index'
+  get 'events', to: 'event#events'
   post 'events/create', to: 'event#create'
   
   
@@ -15,13 +15,10 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
  
   get "users/:user_id" => "users#show"
-  get 'shift/index'
+  get 'shift/index' => "shift#index"
   get "/" => "home#top"
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
-  get "shift/index" => "shift#index"
-
   
 end
 

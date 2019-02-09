@@ -1,15 +1,14 @@
 # coding: utf-8
 class EventController < ApplicationController
 
-  def show
-
+  def events
     @event = Event.all
     
     respond_to do |format|
       format.json {
         render json:
         @event.to_json(
-          only: [:user_id, :user_name, :start, :end]
+          only: [:title, :start, :end]
         )
       }
     end
@@ -18,19 +17,19 @@ class EventController < ApplicationController
   def create
       event = Event.new
       event.attributes = {
-        user_id: current_user.id,
-        user_name: params[:user_name],
+        #user_id: @current_user.user_id,
+        user_name: params[:title],
         start: params[:start],
-        finish_at: params[:finish_at],
+        end: params[:end]
       }
       event.save
       respond_to do |format|
         format.json {
           render json:
-            @event.to_json (
-            only: [:user_id, :user_name, :start, :end]
-            )
-          }
+            event.to_json 
+            #only: [:title, :start, :end]
+          
+        }  
       end
   end
 end
