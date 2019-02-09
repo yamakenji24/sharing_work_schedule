@@ -1,25 +1,11 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+シフト共有アプリ
 
-Things you may want to cover:
+機能
+1. ログイン機能
+2. shop_cordによるシフト表表示
+3. adminの値によって編集機能をつけるかどうか
+4. ログインユーザーページに個人のシフト表示
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# sharing_work_schedule
+Ruby version
+     Ruby 2.5.3

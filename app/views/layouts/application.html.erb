@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("シフト管理アプリ", "/") %>
+      </div> 
+      <ul class="header-menus">
+        
+        <% if @current_user %>
+          <li>
+            <%= link_to(@current_user.name, "/users/#{@current_user.user_id}") %>
+          </li>
+          <li>
+            <%= link_to("シフト表", "/shift/index", data:{turbolinks: false}) %>
+          </li>
+
+          <li>
+             <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+          <li>
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+     <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      
     <%= yield %>
   </body>
 </html>
