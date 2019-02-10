@@ -22,14 +22,13 @@ $(document).ready(function() {
             }
         });
         */
-        alert("確認中!"),
         $.ajax({
             type: 'POST',
             url:"/events/create",
             data: {
                 title: title,
-                start: start,
-                end: end
+                start: String(start),
+                end: String(end)
             }
             // alert("create!"),
         }).done(function(data) {
@@ -47,7 +46,7 @@ $(document).ready(function() {
             right: 'month, agendaWeek, agendaDay'
         },
         navLinks: true,
-        selectable: false,
+        selectable: true,
         selectHelper: true, 
         height: 600,
         width: 400,
@@ -92,6 +91,6 @@ $(document).ready(function() {
         defaultView: 'month',
         
         events: '/events.json',
-        editable: false
+        editable: true
     });
 });
