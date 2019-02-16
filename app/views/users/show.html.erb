@@ -2,9 +2,23 @@
   <div class="container">
     <div class="user">
       <!-- 以下で、ユーザー名を出力してください -->
-      <h2><%= @users.name%></h2>
-      <!-- 以下で、ユーザIDを出力してください -->
-      <p><%= @users.user_id%></p>
+      <h2><%= @users.name%></h2>                                   
     </div>
+    
+    <% @events.each do |event| %>
+      <div class="users-index-item">
+        <div class="user-right">
+          <p>
+            <%= event.start.month %>月
+            <%= event.start.day %>日
+            <%= event.start.hour %>
+            時〜
+            <%= event.end.hour %>
+            時
+          </p>          
+        </div>
+      </div>
+    <% end %>
+      
   </div>
 </div>

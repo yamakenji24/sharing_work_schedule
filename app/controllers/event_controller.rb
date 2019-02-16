@@ -14,15 +14,29 @@ class EventController < ApplicationController
     end
   end
 
-  def create
-    flash[:notice] = "create method"
-
-    event = Event.new
-    event.attributes = {
-      #user_id: @current_user.user_id,
-      title: params[:title],
+  def update
+    @event = Event.find_by(params[:id])
+    @event.attributes = {
       start: params[:start],
       end: params[:end]
+    }
+    @event.save
+    respond_to do |format|
+      format.json {
+        render json:
+        @event.to_json
+      }
+    end
+  end
+  
+  def create
+    @user = User.find_by(user_id: @current_user.user_id)
+    event = Event.new
+    event.attributes = {
+      title: params[:title],
+      start: params[:start],
+      end: params[:end],
+      user_id: @user.user_id
     }
     event.save
     respond_to do |format|
@@ -33,6 +47,4 @@ class EventController < ApplicationController
       }  
     end
   end
-end
-
-  
+end  

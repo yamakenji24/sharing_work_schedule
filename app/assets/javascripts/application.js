@@ -38,6 +38,22 @@ $(document).ready(function() {
         });
     };
 
+    update_event = function(id, title, start, end) {
+        $.ajax({
+            type: 'POST',
+            url:"/events/update",
+            data: {
+                id: id,
+                title: title,
+                start: String(start),
+                end: String(end)
+            }
+        }).done(function(data) {
+            alert("更新しました!");
+        }).fail(function(data) {
+            alert("更新できませんでした。");
+        });
+    };
             
     $('#calendar').fullCalendar({
         header: {
@@ -51,6 +67,7 @@ $(document).ready(function() {
         height: 600,
         width: 400,
 
+        // 幅選択
         select: function(start, end) {
             var title = prompt('ユーザー名');
             var eventData;
@@ -66,6 +83,26 @@ $(document).ready(function() {
                 create_event(title, start, end);
             }
             //現在の選択したっていう場所をクリア
+            $('#calendar').fullCalendar('unselect')
+        },
+        
+        // イベントクリック
+        eventClick: function(event) {
+            var id = event.id
+            
+        },
+
+        // イベントをドラッグ＆ドロップした際に実行
+        eventDrop: function(event) {
+            var eventtime;
+            eventtime = {
+                id: id,
+                title: title,
+                start: start,
+                end: end,
+            };
+            $('#calendar').fullCalendar('refetchEvents');
+            update_event(id, title, start, end);
             $('#calendar').fullCalendar('unselect')
         },
         
