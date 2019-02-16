@@ -27,6 +27,14 @@
           <li>
              <%= link_to("ユーザー一覧", "/users/index") %>
           </li>
+          <% if @current_user.admin == 100 %>
+          <li>
+             <%= link_to("シフト追加", "/users/new") %>
+          </li>
+          <li>
+            <%= link_to("新規ユーザー登録", "/users/new_user") %>
+          </li>
+          <% end %>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
           </li>

@@ -1,38 +1,50 @@
 # coding: utf-8
 class EventController < ApplicationController
-
-  def show
-
+  protect_from_forgery
+  
+  def events
     @event = Event.all
-    
     respond_to do |format|
       format.json {
         render json:
         @event.to_json(
-          only: [:user_id, :user_name, :start, :end]
+          only: [:title, :start, :end]
         )
       }
     end
   end
 
-  def create
-      event = Event.new
-      event.attributes = {
-        user_id: current_user.id,
-        user_name: params[:user_name],
-        start: params[:start],
-        finish_at: params[:finish_at],
+  def update
+    @event = Event.find_by(params[:id])
+    @event.attributes = {
+      start: params[:start],
+      end: params[:end]
+    }
+    @event.save
+    respond_to do |format|
+      format.json {
+        render json:
+        @event.to_json
       }
-      event.save
-      respond_to do |format|
-        format.json {
-          render json:
-            @event.to_json (
-            only: [:user_id, :user_name, :start, :end]
-            )
-          }
-      end
+    end
   end
-end
-
   
+  def create
+    @user = User.find_by(user_id: @current_user.user_id)
+    event = Event.new
+    event.attributes = {
+      title: params[:title],
+      start: params[:start],
+      end: params[:end],
+      user_id: @user.user_id
+    }
+    event.save
+    respond_to do |format|
+      format.json {
+        render json:
+        event.to_json 
+        #only: [:user_name, :start_time, :end_time]          
+      }  
+    end
+  end
+end  

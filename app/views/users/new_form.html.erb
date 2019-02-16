@@ -1,0 +1,25 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">シフト追加</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% if @error_message %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+        <% end %>
+        <%= form_tag("/users/new") do %>
+          <p>ユーザ名</p>
+           <input name="name" value="<%= @name %>">
+          <p>シフト開始</p>
+          <%= form_for :obj do |f| %>
+            <%= f.datetime_select :events %>
+            <p>シフト終了</p>
+            <%= f.datetime_select :events %>
+          <% end %>
+          <input type="submit" value="シフト追加">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

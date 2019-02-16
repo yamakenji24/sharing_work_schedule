@@ -10,6 +10,51 @@
 //= require_tree .
 
 $(document).ready(function() {
+    create_event = function(title, start, end) {
+        /*
+        $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+            var token;
+            if (!options.crossDomain) {
+                token = $('meta[name="csrf-token"]').attr('content');
+                if ( token ) {
+                    return jqXHR.setRequestHeader('X-CSRF-Token', token);
+                }
+            }
+        });
+        */
+        $.ajax({
+            type: 'POST',
+            url:"/events/create",
+            data: {
+                title: title,
+                start: String(start),
+                end: String(end)
+            }
+            // alert("create!"),
+        }).done(function(data) {
+            alert("登録しました!");
+        }).fail(function(data) {
+            alert("登録できませんでした。");
+        });
+    };
+
+    update_event = function(id, title, start, end) {
+        $.ajax({
+            type: 'POST',
+            url:"/events/update",
+            data: {
+                id: id,
+                title: title,
+                start: String(start),
+                end: String(end)
+            }
+        }).done(function(data) {
+            alert("更新しました!");
+        }).fail(function(data) {
+            alert("更新できませんでした。");
+        });
+    };
+            
     $('#calendar').fullCalendar({
         header: {
             left: 'prev, next, today',
@@ -22,18 +67,43 @@ $(document).ready(function() {
         height: 600,
         width: 400,
 
+        // 幅選択
         select: function(start, end) {
-            var user_name = prompt('ユーザー名:');
+            var title = prompt('ユーザー名');
             var eventData;
-            if ( user_name) {
+            if ( title ) {
                 eventData = {
-                    user_name: user_name,
+                    title: title,
                     start: start,
-                    finish_at: end
+                    end: end
                 };
+                //登録したイベントをカレンダー上に永久に？くっつける？
                 $('#calendar').fullCalendar('renderEvent', eventData, true);
+      
+                create_event(title, start, end);
             }
-            $('#calendar').fullCalendar('unselect');
+            //現在の選択したっていう場所をクリア
+            $('#calendar').fullCalendar('unselect')
+        },
+        
+        // イベントクリック
+        eventClick: function(event) {
+            var id = event.id
+            
+        },
+
+        // イベントをドラッグ＆ドロップした際に実行
+        eventDrop: function(event) {
+            var eventtime;
+            eventtime = {
+                id: id,
+                title: title,
+                start: start,
+                end: end,
+            };
+            $('#calendar').fullCalendar('refetchEvents');
+            update_event(id, title, start, end);
+            $('#calendar').fullCalendar('unselect')
         },
         
         //ボタン文字列

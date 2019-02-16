@@ -32,6 +32,38 @@ class UsersController < ApplicationController
 
   def show
     @users = User.find_by(user_id: params[:user_id])
+    @events = Event.where(user_id: @users.user_id)
+  end
+
+  def new_userform
+
   end
   
+  def new_user
+
+  end
+  #admin権限でdbにシフトを追加可能に
+  def new_form
+
+  end
+  def new
+    @users = User.find_by(name: params[:name])
+    
+    if @users
+      @event = Event.new(
+        user_id: @users.user_id,
+        month: params[:month],
+        day: params[:day],
+        start: params[:start],
+        end: params[:end],
+      )
+      @event.save
+      flash[:notice] = "登録しました"
+      redirect_to("/users/new")
+      
+    else
+      @error_message = "未登録のユーザーです"
+      render("/users/new")
+    end
+  end
 end
