@@ -59,7 +59,7 @@ $(document).ready(function() {
         header: {
             left: 'prev, next, today',
             center: 'title',
-            right: 'month, agendaWeek, agendaDay'
+            right: 'month, agendaWeek, agendaDay, listWeek'
         },
         navLinks: true,
         selectable: true,
@@ -113,8 +113,8 @@ $(document).ready(function() {
             today: '今日',
             month: '月',
             week: '週',
-            day: '日'
-
+            day: '日',
+            list: 'リスト'
         },
         // 月名称
         monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],

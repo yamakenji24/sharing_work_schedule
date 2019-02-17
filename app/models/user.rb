@@ -4,9 +4,9 @@ class User < ApplicationRecord
   validates :name, {presence: true}
   validates :shop_cord, {presence: true}
   validates :password, {presence: true}
-  validates :month, {presence: true}
-  validates :day, {presence: true}
-  validates :start, {presence: true}
-  validates :end, {presence: true}
+# validates :month, {presence: true}
+# validates :day, {presence: true}
+# validates :start, {presence: true}
+# validates :end, {presence: true}
   
 end

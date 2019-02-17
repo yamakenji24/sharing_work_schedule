@@ -1,0 +1,21 @@
+<div class="main users-index">
+  <div class="container">
+    <div class="form-heading">新規ユーザー登録</div>
+      <div class="form users-form">
+        <div class="form-body">
+          <% if @error_message %>
+            <div class="form-error">
+              <%= @error_message %>
+            </div>
+          <% end %>
+          <%= form_tag("/users/create_user") do %>
+          <p>ユーザ名</p>
+          <input type="name" name="name">
+          <p>ユーザID</p>
+          <input type="user_id" name="user_id">
+          <input type="submit" value="登録">
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
