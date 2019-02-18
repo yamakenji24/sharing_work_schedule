@@ -12,7 +12,11 @@
   <body>
     <header>
       <div class="header-logo">
-        <%= link_to("シフト管理アプリ", "/") %>
+        <% if @current_user %>
+
+        <% else %>
+          <%= link_to("シフト管理アプリ", "/") %>
+        <% end %>
       </div> 
       <ul class="header-menus">
         
@@ -23,16 +27,19 @@
           <li>
             <%= link_to("シフト表", "/shift/index", data:{turbolinks: false}) %>
           </li>
-
-          <li>
-             <%= link_to("ユーザー一覧", "/users/index") %>
-          </li>
+          
           <% if @current_user.admin == 100 %>
+          <li>
+            <%= link_to("ユーザ一覧", "/users/index") %>
+          </li>
           <li>
              <%= link_to("シフト追加", "/users/new") %>
           </li>
           <li>
-            <%= link_to("新規ユーザー登録", "/users/new_user") %>
+            <%= link_to("新規ユーザー登録", "/users/create_user") %>
+          </li>
+          <li>
+            <%= link_to("ユーザ一覧", "/users/index") %>
           </li>
           <% end %>
           <li>
@@ -41,9 +48,6 @@
         <% else %>
           <li>
             <%= link_to("ログイン", "/login") %>
-          </li>
-          <li>
-            <%= link_to("ユーザー一覧", "/users/index") %>
           </li>
         <% end %>
       </ul>

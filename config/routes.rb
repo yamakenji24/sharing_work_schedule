@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get "users/index" => "users#index"
 
   # 新ユーザー登録
-  get "users/new_user" => "users#new_userform"
-  post "users/new_user" => "users#new_user"
+  get "users/create_user" => "users#create_userform"
+  post "users/create_user" => "users#create_user"
   
   # ログアウト用
   post "logout" => "users#logout"
