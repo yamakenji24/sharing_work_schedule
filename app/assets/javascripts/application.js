@@ -47,8 +47,8 @@ $(document).ready(function() {
                 id: id,
                 title: title,
                 start: String(start),
-                end: String(end)
-                "authenticity_token": $("#authenticity_token").val()
+                end: String(end),
+                authenticity_token: $("#authenticity_token").val()
             }
         }).done(function(data) {
             alert("更新しました!");
