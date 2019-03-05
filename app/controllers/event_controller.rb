@@ -38,8 +38,8 @@ class EventController < ApplicationController
     event = Event.new
     event.attributes = {
       title: params[:title],
-      start: params[:start],
-      end: params[:end],
+      start: DateTime.parse(params[:start]),
+      end: DateTime.parse(params[:end]),
       user_id: @user.user_id
     }
     event.save
