@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     )
     if @users.save
       flash[:notice] = "新規登録しました"
-      redirect_to("/users/create_userform")
+      redirect_to("/users/#{@current_user.user_id}")
     else
       @error_message = "新規ユーザ登録失敗"
       render("/users/create_userform")
