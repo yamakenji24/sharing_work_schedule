@@ -1,6 +1,6 @@
 # coding: utf-8
 class EventController < ApplicationController
-  protect_from_forgery
+  #protect_from_forgery
   
   def events
     @event = Event.all
