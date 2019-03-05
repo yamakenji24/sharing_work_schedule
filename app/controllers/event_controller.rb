@@ -16,10 +16,14 @@ class EventController < ApplicationController
 
   def update
     @event = Event.find_by(params[:id])
+=begin
     @event.attributes = {
       start: params[:start],
       end: params[:end]
     }
+=end
+    @event.start = params[:start]
+    @event.end = params[:end]
     @event.save
     respond_to do |format|
       format.json {
