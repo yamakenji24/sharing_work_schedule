@@ -1,4 +1,3 @@
-
 //= require rails-ujs
 //= require activestorage
 //= require jquery
@@ -39,6 +38,7 @@ $(document).ready(function() {
     };
 
     update_event = function(id, title, start, end) {
+        alert("move!");
         $.ajax({
             type: 'POST',
             url:"/events/update",
@@ -66,6 +66,7 @@ $(document).ready(function() {
         selectHelper: true, 
         height: 600,
         width: 400,
+        draggable: true,
 
         // 幅選択
         select: function(start, end) {
@@ -94,16 +95,16 @@ $(document).ready(function() {
 
         // イベントをドラッグ＆ドロップした際に実行
         eventDrop: function(event) {
-            var eventtime;
-            eventtime = {
-                id: id,
-                title: title,
-                start: start,
-                end: end,
+            var updateevent;
+            updateevent= {
+                id: event.id,
+                title: event.title,
+                start: event.start,
+                end: event.end,
             };
             $('#calendar').fullCalendar('refetchEvents');
             update_event(id, title, start, end);
-            $('#calendar').fullCalendar('unselect')
+            //$('#calendar').fullCalendar('unselect')
         },
         
         //ボタン文字列

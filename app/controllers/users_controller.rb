@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
   
   def login
-    @users = User.find_by(user_id: params[:user_id], password: params[:password])
-    if @users
-      session[:user_id] = @users.user_id
+    @user = User.find_by(user_id: params[:user_id])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.user_id
       flash[:notice] = "ログインしました"
       redirect_to("/shift/index")
     else
