@@ -109,6 +109,10 @@ $(document).ready(function() {
             //$('#calendar').fullCalendar('unselect')
         },
         
+        eventAfterRender: function(event, element, view) {
+            $(element).css('width', '100px');
+        },
+        
         //ボタン文字列
         buttonText: {
             prev: '<',
