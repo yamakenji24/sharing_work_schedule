@@ -17,7 +17,14 @@
         <% else %>
           <%= link_to("シフト管理アプリ", "/") %>
         <% end %>
-      </div> 
+      </div>
+      <ul class="header-menus-left">
+        <% if @current_user %>
+        　　<li>
+              <%= link_to("ホーム", "/home") %>
+            </li>
+        <% end %>
+      </ul>
       <ul class="header-menus">
         
         <% if @current_user %>
@@ -41,6 +48,10 @@
             <%= link_to("ユーザ一覧", "/users/index") %>
           </li>
           <% end %>
+          
+          <li>
+            <%= link_to("ユーザ設定", "/users/option") %>
+          </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
           </li>

@@ -108,6 +108,9 @@ $(document).ready(function() {
             update_event(id, title, start, end);
             //$('#calendar').fullCalendar('unselect')
         },
+        eventAfterRender: function(event, element, view) {
+            $(element).css('width', '100px');
+        },
         
         //ボタン文字列
         buttonText: {

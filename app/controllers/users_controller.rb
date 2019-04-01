@@ -1,6 +1,10 @@
 # coding: utf-8
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show]}
+
+  def option
+
+  end
   
   def login_form
 

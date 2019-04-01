@@ -1,6 +1,48 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*ボックスとラベル設定*/
+.accbox {
+    margin: 2em 0;
+    padding: 0;
+    max-width: 400px;
+}
+
+.accbox label {
+    display: block;
+    margin: 1.5px 0;
+    padding: 11px 12px;
+    color: #2f8fcf;
+    font-weight: bold;
+    background: #a4cbf3;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.accbox label:hover {
+    background: #85baef;
+}
+
+.accbox input {
+    display: none;
+}
+
+.accbox .accshow {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.cssacc:checked + .accshow {
+    height: auto;
+    padding: 5px;
+    background: #eaeaea;
+    opacity: 1;
+}
+    
 /* users/index ================================ */
 .users-heading {
   font-weight: 300;
@@ -16,6 +58,7 @@
   box-shadow: 0 2px 6px #c1ced7;
   display: table;
   width: 100%;
+  float: left;
 }
 
 .user-left img {

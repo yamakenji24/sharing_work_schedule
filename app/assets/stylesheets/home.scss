@@ -89,6 +89,19 @@ header {
   float: right;
   padding-right: 20px;
 }
+.header-menus-left {
+  float: left;
+  padding-left: 20px;
+  color: white;
+}
+
+.header-menus-left li {
+    float: left;
+    line-height: 64px;
+    font-size: 13px;
+    color: white;
+    padding-right: 15px;
+}
 
 .header-menus li {
   float: left;
