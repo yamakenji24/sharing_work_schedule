@@ -11,14 +11,15 @@
           パスワード変更用
         </p>
       </div>
-
-      <label for="userlogout">ログアウト</label>
-      <input type="checkbox" id="userlogout" class="cssacc" />
-      <div class="accshow">
-        <!--ここに隠す中身 -->
-        <a href="#" class="cp_btn">ログアウト</a>
-      </div>
-      
+      <%= form_tag("/logout") do %>
+        <label for="userlogout">ログアウト</label>
+        <input type="checkbox" id="userlogout" class="cssacc" />
+        <div class="accshow">
+          <!--ここに隠す中身 -->
+          <button type="submit" class="cp_btn">ログアウト</button>
+          <!-- <a href="logout" class="cp_btn"> ログアウト</a>-->
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

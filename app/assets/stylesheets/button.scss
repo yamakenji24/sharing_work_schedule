@@ -1,7 +1,8 @@
 
 /* ボタン用のcss */
 
-a.cp_btn {
+
+button.cp_btn {
     display: block;
     position: relative;
     width: 160px;
@@ -15,7 +16,7 @@ a.cp_btn {
     z-index: 1 !important;
 }
 
-a.cp_btn:after {
+button.cp_btn:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -29,15 +30,15 @@ a.cp_btn:after {
     z-index: -1;
 }
 
-a.cp_btn:hover {
+button.cp_btn:hover {
     color: #da3c41;
 }
-a.cp_btn:hover:after {
+button.cp_btn:hover:after {
     height: 250%;
     opacity: 1;
 }
 
-a.cp_btn:active:after {
+button.cp_btn:active:after {
     height: 350%;
     opacity: 1;
 }
