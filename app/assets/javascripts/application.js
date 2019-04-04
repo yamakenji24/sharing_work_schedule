@@ -48,12 +48,30 @@ $(document).ready(function() {
                 title: title,
                 start: String(start),
                 end: String(end),
-                "authenticity_token": $("#authenticity_token").val()
+                "authenticity_token": $("#authenticy_token").val()
             }
         }).done(function(data) {
             alert("更新しました!");
         }).fail(function(data) {
             alert("更新できませんでした。");
+        });
+    };
+    
+    delete_event = function(id, start, end) {
+        alert("check");
+        $.ajax({
+            type: 'POST',
+            url:"/events/delete",
+            data: {
+                id: id,
+                start: String(start),
+                end: String(end),
+                "authenticity_token": $("#authenticy_token").val()
+            }
+        }).done(function(data) {
+            alert("削除しました");
+        }).fail(function(data) {
+            alert("削除に失敗しました");
         });
     };
             
@@ -74,6 +92,7 @@ $(document).ready(function() {
         select: function(start, end) {
             var title = prompt('ユーザー名');
             var eventData;
+            
             if ( title ) {
                 eventData = {
                     title: title,
@@ -82,7 +101,6 @@ $(document).ready(function() {
                 };
                 //登録したイベントをカレンダー上に永久に？くっつける？
                 $('#calendar').fullCalendar('renderEvent', eventData, true);
-      
                 create_event(title, start, end);
             }
             //現在の選択したっていう場所をクリア
@@ -91,8 +109,17 @@ $(document).ready(function() {
         
         // イベントクリック
         eventClick: function(event) {
-            var id = event.id
-            
+            var checkresult = window.confirm('削除しますか');
+            var deleteevent = calendar.getEventById(event.id);
+            alert(event.title);
+            if ( checkresult ) {
+                deleteevent = {
+                    id: id,
+                    start: start,
+                    end: end,
+                };
+                delete_event(event.id, event.start, event.end);
+            }
         },
 
         // イベントをドラッグ＆ドロップした際に実行

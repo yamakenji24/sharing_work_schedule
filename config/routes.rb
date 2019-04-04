@@ -2,9 +2,10 @@
 Rails.application.routes.draw do
   # 試しに
  
-  get "events" => "event#events"
+  get "events" => "event#index"
   post "events/create" => "event#create"
   post "events/update" => "event#update"
+  post "events/delete" => "event#delete"
   
   get "login" => "users#login_form"
   post "login" => "users#login"

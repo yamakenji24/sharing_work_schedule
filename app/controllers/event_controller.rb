@@ -2,12 +2,12 @@
 class EventController < ApplicationController
   #protect_from_forgery
   
-  def events
-    @event = Event.all
+  def index
+    events = Event.all
     respond_to do |format|
       format.json {
         render json:
-        @event.to_json(
+        events.to_json(
           only: [:title, :start, :end]
         )
       }
@@ -33,6 +33,17 @@ class EventController < ApplicationController
     end
   end
   
+  def delete
+    event = Event.find_by(params[:id])
+    event.delete
+    respond_to do |format|
+        format.json {
+          render json:
+          event.to_json
+        }
+      end
+  end
+
   def create
     @user = User.find_by(user_id: @current_user.user_id)
     event = Event.new
