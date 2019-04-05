@@ -57,19 +57,21 @@ $(document).ready(function() {
         });
     };
     
-    delete_event = function(id, start, end) {
-        alert("check");
+    delete_event = function(deleteevent) {
+        //alert(deleteevent.id);
+        console.log(deleteevent.id);
         $.ajax({
             type: 'POST',
             url:"/events/delete",
             data: {
-                id: id,
-                start: String(start),
-                end: String(end),
+                id: deleteevent.id,
+                start: String(deleteevent.start),
+                end: String(deleteevent.end),
                 "authenticity_token": $("#authenticy_token").val()
             }
         }).done(function(data) {
             alert("削除しました");
+            window.location.reload();
         }).fail(function(data) {
             alert("削除に失敗しました");
         });
@@ -108,17 +110,18 @@ $(document).ready(function() {
         },
         
         // イベントクリック
-        eventClick: function(event) {
-            var checkresult = window.confirm('削除しますか');
-            var deleteevent = calendar.getEventById(event.id);
-            alert(event.title);
+        eventClick: function(info) {
+            var checkresult = window.confirm('削除しますか?');
+            //var deleteevent = calendar.getEventById(event.id);
+            //alert(info.id);
             if ( checkresult ) {
                 deleteevent = {
-                    id: id,
-                    start: start,
-                    end: end,
+                    id: info.id,
+                    start: info.start,
+                    end: info.end,
                 };
-                delete_event(event.id, event.start, event.end);
+                
+                delete_event(deleteevent);
             }
         },
 

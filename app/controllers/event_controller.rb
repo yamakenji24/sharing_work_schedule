@@ -8,7 +8,7 @@ class EventController < ApplicationController
       format.json {
         render json:
         events.to_json(
-          only: [:title, :start, :end]
+          only: [:id, :title, :start, :end]
         )
       }
     end
@@ -34,14 +34,11 @@ class EventController < ApplicationController
   end
   
   def delete
-    event = Event.find_by(params[:id])
+    event = Event.find_by(id: params[:id])
+    #binding.pry
     event.delete
-    respond_to do |format|
-        format.json {
-          render json:
-          event.to_json
-        }
-      end
+    #redirect_to shift_index_path
+    #redirect_to("/shift/index")
   end
 
   def create
