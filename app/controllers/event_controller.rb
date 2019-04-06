@@ -15,13 +15,8 @@ class EventController < ApplicationController
   end
 
   def update
-    @event = Event.find_by(params[:id])
-=begin
-    @event.attributes = {
-      start: params[:start],
-      end: params[:end]
-    }
-=end
+    @event = Event.find_by(id: params[:id])
+    
     @event.start = params[:start]
     @event.end = params[:end]
     @event.save

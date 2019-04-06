@@ -38,16 +38,15 @@ $(document).ready(function() {
         });
     };
 
-    update_event = function(id, title, start, end) {
-        alert("move!");
+    update_event = function(updateevent) {
         $.ajax({
             type: 'POST',
             url:"/events/update",
             data: {
-                id: id,
-                title: title,
-                start: String(start),
-                end: String(end),
+                id: updateevent.id,
+                title: updateevent.title,
+                start: String(updateevent.start),
+                end: String(updateevent.end),
                 "authenticity_token": $("#authenticy_token").val()
             }
         }).done(function(data) {
@@ -126,16 +125,16 @@ $(document).ready(function() {
         },
 
         // イベントをドラッグ＆ドロップした際に実行
-        eventDrop: function(event) {
+        eventDrop: function(info) {
             var updateevent;
             updateevent= {
-                id: event.id,
-                title: event.title,
-                start: event.start,
-                end: event.end,
+                id: info.id,
+                title: info.title,
+                start: info.start,
+                end: info.end,
             };
-            $('#calendar').fullCalendar('refetchEvents');
-            update_event(id, title, start, end);
+            //'#calendar').fullCalendar('refetchEvent')
+            update_event(updateevent);
             //$('#calendar').fullCalendar('unselect')
         },
         eventAfterRender: function(event, element, view) {
