@@ -1,0 +1,44 @@
+
+/* ボタン用のcss */
+
+
+button.cp_btn {
+    display: block;
+    position: relative;
+    width: 160px;
+    padding: 0.8em;
+    text-aligin: center;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #8bc34a;
+    background: #8bc34a;
+    overflow: hidden;
+    z-index: 1 !important;
+}
+
+button.cp_btn:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 100%;
+    background: #fff;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: 0.3s;
+    z-index: -1;
+}
+
+button.cp_btn:hover {
+    color: #da3c41;
+}
+button.cp_btn:hover:after {
+    height: 250%;
+    opacity: 1;
+}
+
+button.cp_btn:active:after {
+    height: 350%;
+    opacity: 1;
+}

@@ -1,6 +1,25 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: [:index, :show]}
+  before_action :authenticate_user, {only: [:index, :show, :option]}
+
+  def change_password
+     if @current_user.authenticate(params[:oldpass])
+      if params[:newpass] == params[:checknewpass] && !params[:newpass].blank?
+        @error_message = "パスワードを更新しました"
+        @current_user.password = params[:newpass]
+        @current_user.save
+      else
+        @error_message = "新しいパスワードが一致していません"
+      end
+     else
+      @error_message = "現パスワードが間違っています"
+     end
+     render("/users/option")
+  end
+  
+  def option
+    
+  end
   
   def login_form
 
@@ -32,7 +51,7 @@ class UsersController < ApplicationController
 
   def show
     @users = User.find_by(user_id: params[:user_id])
-    @events = Event.where(user_id: @users.user_id)
+    @events = Event.where(user_id: @users.user_id).order(start: "DESC")
   end
 
   def create_userform

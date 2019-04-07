@@ -38,22 +38,41 @@ $(document).ready(function() {
         });
     };
 
-    update_event = function(id, title, start, end) {
-        alert("move!");
+    update_event = function(updateevent) {
         $.ajax({
             type: 'POST',
             url:"/events/update",
             data: {
-                id: id,
-                title: title,
-                start: String(start),
-                end: String(end),
-                "authenticity_token": $("#authenticity_token").val()
+                id: updateevent.id,
+                title: updateevent.title,
+                start: String(updateevent.start),
+                end: String(updateevent.end),
+                "authenticity_token": $("#authenticy_token").val()
             }
         }).done(function(data) {
             alert("更新しました!");
         }).fail(function(data) {
             alert("更新できませんでした。");
+        });
+    };
+    
+    delete_event = function(deleteevent) {
+        //alert(deleteevent.id);
+        console.log(deleteevent.id);
+        $.ajax({
+            type: 'POST',
+            url:"/events/delete",
+            data: {
+                id: deleteevent.id,
+                start: String(deleteevent.start),
+                end: String(deleteevent.end),
+                "authenticity_token": $("#authenticy_token").val()
+            }
+        }).done(function(data) {
+            alert("削除しました");
+            window.location.reload();
+        }).fail(function(data) {
+            alert("削除に失敗しました");
         });
     };
             
@@ -74,6 +93,7 @@ $(document).ready(function() {
         select: function(start, end) {
             var title = prompt('ユーザー名');
             var eventData;
+            
             if ( title ) {
                 eventData = {
                     title: title,
@@ -82,7 +102,6 @@ $(document).ready(function() {
                 };
                 //登録したイベントをカレンダー上に永久に？くっつける？
                 $('#calendar').fullCalendar('renderEvent', eventData, true);
-      
                 create_event(title, start, end);
             }
             //現在の選択したっていう場所をクリア
@@ -90,23 +109,36 @@ $(document).ready(function() {
         },
         
         // イベントクリック
-        eventClick: function(event) {
-            var id = event.id
-            
+        eventClick: function(info) {
+            var checkresult = window.confirm('削除しますか?');
+            //var deleteevent = calendar.getEventById(event.id);
+            //alert(info.id);
+            if ( checkresult ) {
+                deleteevent = {
+                    id: info.id,
+                    start: info.start,
+                    end: info.end,
+                };
+                
+                delete_event(deleteevent);
+            }
         },
 
         // イベントをドラッグ＆ドロップした際に実行
-        eventDrop: function(event) {
+        eventDrop: function(info) {
             var updateevent;
             updateevent= {
-                id: event.id,
-                title: event.title,
-                start: event.start,
-                end: event.end,
+                id: info.id,
+                title: info.title,
+                start: info.start,
+                end: info.end,
             };
-            $('#calendar').fullCalendar('refetchEvents');
-            update_event(id, title, start, end);
+            //'#calendar').fullCalendar('refetchEvent')
+            update_event(updateevent);
             //$('#calendar').fullCalendar('unselect')
+        },
+        eventAfterRender: function(event, element, view) {
+            $(element).css('width', '100px');
         },
         
         eventAfterRender: function(event, element, view) {

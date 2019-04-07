@@ -1,0 +1,42 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">ユーザ設定</h1>
+
+    <% if @error_message %>
+    <div class="form_message">
+      <%= @error_message %>
+    </div>
+    <% end %>
+    
+    <div class="accbox">
+      <label for="changepass">パスワード設定</label>
+      <input type="checkbox" id="changepass" class="cssacc" />
+      
+      <div class="accshow">
+        <!-- ここに隠す中身-->
+        <%= form_tag("/users/option") do %>
+        
+        <p>パスワード変更前</p>
+        <input type="password" name="oldpass">
+        <p>新しいパスワード</p>
+        <input type="password" name="newpass">
+        <p>新しいパスワード再入力</p>
+        <input type="password" name="checknewpass">
+        <p></p>
+        <button type="submit" class="cp_btn">変更</button>
+        
+        
+        <% end %>
+      </div>
+      
+      <%= form_tag("/logout") do %>
+        <label for="userlogout">ログアウト</label>
+        <input type="checkbox" id="userlogout" class="cssacc" />
+        <div class="accshow">
+          <!--ここに隠す中身 -->
+          <button type="submit" class="cp_btn">ログアウト</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

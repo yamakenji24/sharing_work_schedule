@@ -2,20 +2,24 @@
 Rails.application.routes.draw do
   # 試しに
  
-  get "events" => "event#events"
+  get "events" => "event#index"
   post "events/create" => "event#create"
   post "events/update" => "event#update"
+  post "events/delete" => "event#delete"
   
   get "login" => "users#login_form"
   post "login" => "users#login"
+  post "logout" => "users#logout"
+  post "users/option" => "users#change_password"
+  
   get "users/index" => "users#index"
+  
+  #ユーザ設定
+  get "users/option" => "users#option"
 
   # 新ユーザー登録
   get "users/create_user" => "users#create_userform"
   post "users/create_user" => "users#create_user"
-  
-  # ログアウト用
-  post "logout" => "users#logout"
 
   #dbにシフト追加用                                                                                                                                         
   get "users/new" => "users#new_form"
@@ -25,6 +29,9 @@ Rails.application.routes.draw do
   get 'shift/index' => "shift#index"
   get "/" => "home#top"
   
+  #使い方手引書＆更新内容の表示
+  get "home" => "home#home"
+
   resources :events
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
