@@ -1,9 +1,23 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: [:index, :show]}
+  before_action :authenticate_user, {only: [:index, :show, :option]}
 
+  def change_password
+     if @current_user.password == params[:oldpass]
+      if params[:newpass] == params[:checknewpass]
+        @error_message = "パスワードを更新しました"
+      else
+        @error_message = "新しいパスワードが一致していません"
+      end
+    else
+      @error_message = "現パスワードが間違っています"
+    end
+    render("/users/option")
+
+  end
+  
   def option
-
+    
   end
   
   def login_form

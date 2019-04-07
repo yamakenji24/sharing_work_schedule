@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get "login" => "users#login_form"
   post "login" => "users#login"
   post "logout" => "users#logout"
+  post "users/option" => "users#change_password"
+  
   get "users/index" => "users#index"
+  
   #ユーザ設定
   get "users/option" => "users#option"
 
