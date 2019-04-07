@@ -3,17 +3,18 @@ class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :option]}
 
   def change_password
-     if @current_user.password == params[:oldpass]
-      if params[:newpass] == params[:checknewpass]
+     if @current_user.authenticate(params[:oldpass])
+      if params[:newpass] == params[:checknewpass] && !params[:newpass].blank?
         @error_message = "パスワードを更新しました"
+        @current_user.password = params[:newpass]
+        @current_user.save
       else
         @error_message = "新しいパスワードが一致していません"
       end
-    else
+     else
       @error_message = "現パスワードが間違っています"
-    end
-    render("/users/option")
-
+     end
+     render("/users/option")
   end
   
   def option
