@@ -1,0 +1,24 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">給料計算</h1>
+
+    <% if @error_message %>
+      <div class="form_message">
+        <%= @error_message %>
+      </div>
+    <% end %>
+
+    <div class="accbox">
+      <label for="monthlyfee">1</label>
+      <input type="checkbox" id="monthlyfee" class="cssacc" />
+      <div class="accshow">
+        <% @events.each do |event| %>
+        
+
+        <% end %>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>

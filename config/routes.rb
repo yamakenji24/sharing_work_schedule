@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post "users/changefee" => "users#change_fee"
   
   get "users/index" => "users#index"
+
+  #給料計算
+  get "users/calc" => "users#calc"
   
   #ユーザ設定
   get "users/option" => "users#option"

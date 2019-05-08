@@ -34,6 +34,9 @@
           <li>
             <%= link_to("シフト表", "/shift/index", data:{turbolinks: false}) %>
           </li>
+          <li>
+            <%= link_to("給料計算", "/users/calc") %>
+          </li>
           
           <% if @current_user.admin == 100 %>
           <!--

@@ -28,6 +28,13 @@ class UsersController < ApplicationController
   def option
     
   end
+
+  def calc
+    @events = Event.where(user_id: @current_user.user_id).order(start: "DESC")
+    
+    tmp = 0
+    
+  end
   
   def login_form
 
