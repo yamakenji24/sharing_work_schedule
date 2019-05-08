@@ -16,6 +16,14 @@ class UsersController < ApplicationController
      end
      render("/users/option")
   end
+
+  def change_fee
+    if params[:newfee] =~ /^[0-9]+$/
+      @current_user.hourfee = params[:newfee]
+      @current_user.save
+    end
+    render("/users/option")         
+  end
   
   def option
     

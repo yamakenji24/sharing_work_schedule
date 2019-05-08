@@ -10,22 +10,32 @@
     
     <div class="accbox">
       <label for="changepass">パスワード設定</label>
-      <input type="checkbox" id="changepass" class="cssacc" />
-      
+      <input type="checkbox" id="changepass" class="cssacc" />      
       <div class="accshow">
         <!-- ここに隠す中身-->
         <%= form_tag("/users/option") do %>
         
-        <p>パスワード変更前</p>
-        <input type="password" name="oldpass">
-        <p>新しいパスワード</p>
-        <input type="password" name="newpass">
-        <p>新しいパスワード再入力</p>
-        <input type="password" name="checknewpass">
-        <p></p>
-        <button type="submit" class="cp_btn">変更</button>
+          <p>パスワード変更前</p>
+          <input type="password" name="oldpass">
+          <p>新しいパスワード</p>
+          <input type="password" name="newpass">
+          <p>新しいパスワード再入力</p>
+          <input type="password" name="checknewpass">
+          <p></p>
+          <button type="submit" class="cp_btn">変更</button>
         
-        
+        <% end %>
+      </div>
+      
+      <label for="changefee">給料設定</label>
+      <input type="checkbox" id="changefee" class="cssacc" />
+      <div class="accshow">
+        <%= form_tag("/users/changefee") do %>
+
+          <p>時給設定</p>
+          <input type="text" name="newfee">
+          <button type="submit" class="cp_btn">変更</button>
+
         <% end %>
       </div>
       

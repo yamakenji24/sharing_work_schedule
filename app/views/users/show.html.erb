@@ -12,11 +12,10 @@
           <p>
             <%= event.start.month %>月
             <%= event.start.day %>日
-            <%= event.start.hour %>
-            時〜
-            <%= event.end.hour %>
-            時&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日給: 
-            <%= (event.end.hour-event.start.hour)*@users.hourfee %>
+            <%= event.start.hour %>時<%= event.start.min %>分 〜
+            <%= event.end.hour %>時<%= event.end.min %>分
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日給: 
+            <%= event.daypay %>
             円
           </p>          
         </div>
