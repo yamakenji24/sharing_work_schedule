@@ -45,7 +45,11 @@ class EventController < ApplicationController
       end: DateTime.parse(params[:end]),
       user_id: @user.user_id
     }
+
+    event.daypay = (event.end - event.start)/60/60 * @user.hourfee
+          
     event.save
+=begin
     respond_to do |format|
       format.json {
         render json:
@@ -53,5 +57,6 @@ class EventController < ApplicationController
         #only: [:user_name, :start_time, :end_time]          
       }  
     end
+=end
   end
 end  

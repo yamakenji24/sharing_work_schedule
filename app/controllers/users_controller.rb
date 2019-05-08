@@ -52,6 +52,7 @@ class UsersController < ApplicationController
   def show
     @users = User.find_by(user_id: params[:user_id])
     @events = Event.where(user_id: @users.user_id).order(start: "DESC")
+    
   end
 
   def create_userform

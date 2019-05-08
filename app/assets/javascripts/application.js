@@ -8,7 +8,7 @@
 //= require fullcalendar/lang/ja
 //= require_tree .
 
-$(document).ready(function() {
+$(function() {
     create_event = function(title, start, end) {
         /*
         $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
                 title: title,
                 start: String(start),
                 end: String(end),
-                "authenticity_token": $("#authenticy_token").val()
+                authenticity_token: $("#authenticy_token").val()
             }
             // alert("create!"),
         }).done(function(data) {
@@ -47,7 +47,7 @@ $(document).ready(function() {
                 title: updateevent.title,
                 start: String(updateevent.start),
                 end: String(updateevent.end),
-                "authenticity_token": $("#authenticy_token").val()
+                authenticity_token: $("#authenticy_token").val()
             }
         }).done(function(data) {
             alert("更新しました!");
@@ -66,7 +66,7 @@ $(document).ready(function() {
                 id: deleteevent.id,
                 start: String(deleteevent.start),
                 end: String(deleteevent.end),
-                "authenticity_token": $("#authenticy_token").val()
+                authenticity_token: $("#authenticy_token").val()
             }
         }).done(function(data) {
             alert("削除しました");

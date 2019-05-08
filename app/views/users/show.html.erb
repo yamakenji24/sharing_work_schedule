@@ -15,7 +15,9 @@
             <%= event.start.hour %>
             時〜
             <%= event.end.hour %>
-            時
+            時&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日給: 
+            <%= (event.end.hour-event.start.hour)*@users.hourfee %>
+            円
           </p>          
         </div>
       </div>
