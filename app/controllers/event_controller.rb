@@ -31,9 +31,11 @@ class EventController < ApplicationController
   
   def delete
     event = Event.find_by(id: params[:id])
-    #binding.pry
-    event.delete
-    #redirect_to shift_index_path
+    if @current_user.user_id == event.user_id
+      event.delete
+    else
+      render("/shift/index")
+    end
     #redirect_to("/shift/index")
   end
 
@@ -47,7 +49,7 @@ class EventController < ApplicationController
       user_id: @user.user_id
     }
     event.daypay = (event.end - event.start)/60/60 * @user.hourfee
-          
+        
     event.save
   end
 end  

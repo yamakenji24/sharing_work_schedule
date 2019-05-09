@@ -4,10 +4,15 @@
 
 <div class="main shift-index">
   <div class="container">
+      <% if @error_message %>
+        <div class="form-error">
+          <%= @error_message %>
+        </div>
+      <% end %>
     
-  </div>  
-  <div id="calendar">
-
   </div>
+    <div id="calendar">
+
+    </div>
 </div>
 
