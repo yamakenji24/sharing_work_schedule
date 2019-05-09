@@ -9,16 +9,16 @@
     <% end %>
 
     <div class="accbox">
-      <label for="monthlyfee">1</label>
-      <input type="checkbox" id="monthlyfee" class="cssacc" />
+      <label for="year">2019</label>
+      <input type="checkbox" id="year" class="cssacc" />
       <div class="accshow">
-        <% @events.each do |event| %>
         
-
+        <% @monthly.each do |month| %>
+          <p><%= @tmp %>月度 <%= month %> 円 </P>
+          <% @tmp+= 1 %>
         <% end %>
-        
-      </div>
+      <div>
+          
     </div>
-    
   </div>
 </div>

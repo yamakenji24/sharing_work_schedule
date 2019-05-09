@@ -31,9 +31,16 @@ class UsersController < ApplicationController
 
   def calc
     @events = Event.where(user_id: @current_user.user_id).order(start: "DESC")
+    @monthly = Array.new(12,0)
+    @tmp = 1
     
-    tmp = 0
-    
+    12.downto(1){|x|
+      @events.each do |event|
+        if event.start.month == x
+          @monthly[x-1] += event.daypay
+        end
+      end
+    }
   end
   
   def login_form
@@ -67,6 +74,7 @@ class UsersController < ApplicationController
   def show
     @users = User.find_by(user_id: params[:user_id])
     @events = Event.where(user_id: @users.user_id).order(start: "DESC")
+    @calcmoney = CalcMoney.where(user_id: @current_user.user_id)          
     
   end
 
@@ -90,10 +98,12 @@ class UsersController < ApplicationController
       render("/users/create_userform")
     end
   end
+  
   #admin権限でdbにシフトを追加可能に
   def new_form
 
   end
+  
   def new
     @users = User.find_by(name: params[:name])
     
