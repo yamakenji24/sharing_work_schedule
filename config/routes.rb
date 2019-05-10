@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
   post "users/option" => "users#change_password"
   post "users/changefee" => "users#change_fee"
+  post "users/maximumfee" => "users#maximumfee"
   
   get "users/index" => "users#index"
 

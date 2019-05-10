@@ -17,8 +17,18 @@ class UsersController < ApplicationController
      render("/users/option")
   end
 
+  def maximumfee
+    if params[:maxfee] =~ /^[0-9]+$/
+      flash[:notice] = "限度額を再設定しました"
+      @current_user.maximumfee = params[:maxfee]
+      @current_user.save
+    end
+    render("/users/option")
+  end
+  
   def change_fee
     if params[:newfee] =~ /^[0-9]+$/
+      flash[:notice] = "時給を更新しました"
       @current_user.hourfee = params[:newfee]
       @current_user.save
     end
@@ -33,6 +43,7 @@ class UsersController < ApplicationController
     @events = Event.where(user_id: @current_user.user_id).order(start: "DESC")
     @monthly = Array.new(12,0)
     @tmp = 1
+    @total = 0
     
     12.downto(1){|x|
       @events.each do |event|
@@ -51,6 +62,14 @@ class UsersController < ApplicationController
     @user = User.find_by(user_id: params[:user_id])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.user_id
+      if @user.hourfee.nil?
+        @user.hourfee = 920
+        @user.save
+      end
+      if @user.maximumfee.nil?
+        @user.maximumfee = 103
+        @user.save
+      end
       flash[:notice] = "ログインしました"
       redirect_to("/shift/index")
     else
@@ -88,7 +107,8 @@ class UsersController < ApplicationController
       user_id: params[:user_id],
       password: "0000",
       admin: 0,
-      shop_cord: 1111
+      shop_cord: 1111,
+      hourfee: 920
     )
     if @users.save
       flash[:notice] = "新規登録しました"

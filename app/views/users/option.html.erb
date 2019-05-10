@@ -1,7 +1,7 @@
 <div class="main users-index">
   <div class="container">
     <h1 class="users-heading">ユーザ設定</h1>
-
+    
     <% if @error_message %>
     <div class="form_message">
       <%= @error_message %>
@@ -31,11 +31,16 @@
       <input type="checkbox" id="changefee" class="cssacc" />
       <div class="accshow">
         <%= form_tag("/users/changefee") do %>
-
           <p>時給設定</p>
-          <input type="text" name="newfee">
+          <input type="text" name="newfee">円
           <button type="submit" class="cp_btn">変更</button>
+        <% end %>
+        </br>
 
+        <%= form_tag("/users/maximumfee") do %>
+          <p>給料限度額設定</p>
+          <input type="text" name="maxfee">万円まで
+          <button type="submit" class="cp_btn">設定</button>
         <% end %>
       </div>
       

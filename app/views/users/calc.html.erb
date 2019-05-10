@@ -15,8 +15,9 @@
         
         <% @monthly.each do |month| %>
           <p><%= @tmp %>月度 <%= month %> 円 </P>
-          <% @tmp+= 1 %>
-        <% end %>
+          <% @tmp+= 1 %> <% @total += month %>
+          <% end %>
+          <p>合計: <%= @total %> 円 </p>
       <div>
           
     </div>

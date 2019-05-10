@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_123353) do
+ActiveRecord::Schema.define(version: 2019_05_10_062321) do
 
   create_table "calc_moneys", force: :cascade do |t|
     t.integer "Year"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_05_08_123353) do
     t.integer "admin"
     t.string "password_digest"
     t.integer "hourfee"
+    t.integer "maximumfee", default: 103
   end
 
 end
