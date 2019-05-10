@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   def show
     @users = User.find_by(user_id: params[:user_id])
     @events = Event.where(user_id: @users.user_id).order(start: "DESC")
-    @calcmoney = CalcMoney.where(user_id: @current_user.user_id)          
+    @tmp = 0
     
   end
 
