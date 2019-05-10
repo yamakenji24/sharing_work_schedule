@@ -61,6 +61,7 @@ class UsersController < ApplicationController
   
   def login
     @user = User.find_by(user_id: params[:user_id])
+    @events = Event.where(user_id: @user.user_id)
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.user_id
       if @user.hourfee.nil?
@@ -70,6 +71,12 @@ class UsersController < ApplicationController
       if @user.maximumfee.nil?
         @user.maximumfee = 103
         @user.save
+      end
+      @events.each do |event|
+        if event.daypay.nil?
+          event.daypay = (event.end - event.start)/60/60 * @user.hourfee
+          event.save
+        end
       end
       flash[:notice] = "ログインしました"
       redirect_to("/shift/index")
