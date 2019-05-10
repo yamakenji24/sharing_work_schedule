@@ -1,24 +1,31 @@
-<div class="main user-show">
+1<div class="main user-show">
   <div class="container">
     <div class="user">
       <!-- 以下で、ユーザー名を出力してください -->
       <h2><%= @users.name%></h2>
-      <p>設定</p>
     </div>
-    
-    <% @events.each do |event| %>
-      <div class="users-index-item">
-        <div class="user-right">
-          <p>
-            <%= event.start.month %>月
-            <%= event.start.day %>日
-            <%= event.start.hour %>
-            時〜
-            <%= event.end.hour %>
-            時
-          </p>          
-        </div>
-      </div>
-    <% end %>
+
+    <div class="accbox">
+      <% @events.each do |event| %>
+        <% if event.start.month != @tmp %>
+          <% @tmp = event.start.month %>
+          <label for="<%= event.start.year %><%= @tmp %>"><%= event.start.year %>年<%= @tmp %>月</label>
+          <input type="checkbox" id="<%= event.start.year %><%= @tmp %>" class="cssacc" />
+          
+        <% end %>
+            <div class="users-index-item">
+              <div class="user-right">
+                <p>
+                  <%= event.start.month %>月
+                  <%= event.start.day %>日
+                  <%= event.start.hour %>時<%= event.start.min %>分 〜
+                  <%= event.end.hour %>時<%= event.end.min %>分
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日給: 
+                  <%= event.daypay %>円
+                </p>
+              </div>
+            </div>
+        <% end %>
+    </div>
   </div>
 </div>

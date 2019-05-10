@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Year: 1
+  Month: 1
+  MonthlyFee: 1
+  user_id: 1
+
+two:
+  Year: 1
+  Month: 1
+  MonthlyFee: 1
+  user_id: 1

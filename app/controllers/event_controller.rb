@@ -19,6 +19,7 @@ class EventController < ApplicationController
     
     @event.start = params[:start]
     @event.end = params[:end]
+    @event.daypay = (@event.end - @event.start)/60/60 * @current_user.hourfee
     @event.save
     respond_to do |format|
       format.json {
@@ -30,9 +31,11 @@ class EventController < ApplicationController
   
   def delete
     event = Event.find_by(id: params[:id])
-    #binding.pry
-    event.delete
-    #redirect_to shift_index_path
+    if @current_user.user_id == event.user_id
+      event.delete
+    else
+      render("/shift/index")
+    end
     #redirect_to("/shift/index")
   end
 
@@ -45,13 +48,8 @@ class EventController < ApplicationController
       end: DateTime.parse(params[:end]),
       user_id: @user.user_id
     }
+    event.daypay = (event.end - event.start)/60/60 * @user.hourfee
+        
     event.save
-    respond_to do |format|
-      format.json {
-        render json:
-        event.to_json 
-        #only: [:user_name, :start_time, :end_time]          
-      }  
-    end
   end
 end  

@@ -1,0 +1,27 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">給料計算</h1>
+
+    <% if @error_message %>
+      <div class="form_message">
+        <%= @error_message %>
+      </div>
+    <% end %>
+
+    <div class="accbox">
+      <label for="year">2019</label>
+      <input type="checkbox" id="year" class="cssacc" />
+      <div class="accshow">
+        
+        <% @monthly.each do |month| %>
+          <p><%= @tmp %>月度 <%= month %> 円 </P>
+          <% @tmp+= 1 %> <% @total += month %>
+        <% end %>
+          <p>合計: <%= @total %> 円 </p>
+          <p>残勤務可能給料: <%= @user.maximumfee*10000 - @total %>円</p>
+          <p>残勤務可能時間: <%= (@user.maximumfee*10000 - @total)/@user.hourfee %>時間</p>
+      <div>
+          
+    </div>
+  </div>
+</div>

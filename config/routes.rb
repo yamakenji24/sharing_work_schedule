@@ -11,8 +11,13 @@ Rails.application.routes.draw do
   post "login" => "users#login"
   post "logout" => "users#logout"
   post "users/option" => "users#change_password"
+  post "users/changefee" => "users#change_fee"
+  post "users/maximumfee" => "users#maximumfee"
   
   get "users/index" => "users#index"
+
+  #給料計算
+  get "users/calc" => "users#calc"
   
   #ユーザ設定
   get "users/option" => "users#option"
