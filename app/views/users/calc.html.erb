@@ -16,8 +16,10 @@
         <% @monthly.each do |month| %>
           <p><%= @tmp %>月度 <%= month %> 円 </P>
           <% @tmp+= 1 %> <% @total += month %>
-          <% end %>
+        <% end %>
           <p>合計: <%= @total %> 円 </p>
+          <p>残勤務可能給料: <%= @user.maximumfee*10000 - @total %>円</p>
+          <p>残勤務可能時間: <%= (@user.maximumfee*10000 - @total)/@user.hourfee %>時間</p>
       <div>
           
     </div>

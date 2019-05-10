@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
   def calc
     @events = Event.where(user_id: @current_user.user_id).order(start: "DESC")
+    @user = User.find_by(user_id: @current_user.user_id)
     @monthly = Array.new(12,0)
     @tmp = 1
     @total = 0
