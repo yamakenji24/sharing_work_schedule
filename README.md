@@ -22,4 +22,4 @@ PCからherokuにログイン
 herokuにデプロイ
 `$ git push heroku master`
 herokuでのマイグレーション
-`$ heroku run rails db:migrate`
+`$ heroku run rails db:migrate`          
