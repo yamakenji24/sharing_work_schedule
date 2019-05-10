@@ -2,6 +2,7 @@
 # シフト共有アプリ
 
 ## 機能
+
 ~~1. ログイン機能~~
 ~~2. ログアウト機能~~
 3. shop_cordによるシフト表表示
@@ -17,8 +18,8 @@ Ruby version
 ## herokuへのデプロイ方法
 
 PCからherokuにログイン
-'$ heroku login  '
+`$ heroku login`
 herokuにデプロイ
-'$ git push heroku master'
+`$ git push heroku master`
 herokuでのマイグレーション
-'$ heroku run rails db:migrate '
+`$ heroku run rails db:migrate`
